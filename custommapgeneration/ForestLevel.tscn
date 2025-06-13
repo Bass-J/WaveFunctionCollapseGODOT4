@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctp648cw874dp"]
+
+[ext_resource type="Script" uid="uid://cbt13bo6ek44h" path="res://forest_level.gd" id="1_1jb81"]
+[ext_resource type="Texture2D" uid="uid://ccwosueyascdn" path="res://BlackTile.png" id="1_r31st"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1jb81"]
+texture = ExtResource("1_r31st")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_r042g"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_1jb81")
+
+[node name="ForestLevel" type="Node2D"]
+script = ExtResource("1_1jb81")
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_r042g")
+format = 2
+
+[node name="Camera2D" type="Camera2D" parent="TileMap"]
+anchor_mode = 0
+zoom = Vector2(0.2, 0.2)
