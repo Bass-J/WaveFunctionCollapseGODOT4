@@ -324,6 +324,7 @@ func remove_bridges(noise_grid: Array) -> void:
 			await get_tree().process_frame
 		print("Room Complete")
 	update_tilemap_from_grid(noise_grid)
+	classify_tiles(noise_grid)
 
 func update_tilemap_from_grid(noise_grid: Array) -> void:
 	for y in range(grid_size.y):
@@ -380,12 +381,25 @@ func classify_tiles(noise_grid: Array) -> Dictionary:
 func tile_texture_grid(classifications: Dictionary) -> void:
 	for y in range(grid_size.y):
 		for x in range(grid_size.x):
-			var tile_class = classifications.get(Vector2i(x, y), "")
-			if tile_class == "floor" and y != 0:
-				tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(1, 0))
-			if tile_class == "roof" and y != (grid_size.y - 1):
-				tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(2, 0))
-			if tile_class == "right_wall" and  x != 0:
-				tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(3, 0))
-			if tile_class == "left_wall" and x != (grid_size.x - 1):
-				tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(4, 0))
+			var is_border = (
+				x == 0 or x == grid_size.x - 1 or
+				y == 0 or y == grid_size.y - 1
+			)
+			if not is_border:
+				var tile_class = classifications.get(Vector2i(x, y), "")
+				if tile_class == "floor" and y != 0:
+					tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(1, randi_range(0,3)))
+				if tile_class == "roof" and y != (grid_size.y - 1):
+					tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(2, randi_range(0,3)))
+				if tile_class == "right_wall" and  x != 0:
+					tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(3, randi_range(0,3)))
+				if tile_class == "left_wall" and x != (grid_size.x - 1):
+					tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(4, randi_range(0,3)))
+				if tile_class == "SE_corner" and x != (grid_size.x - 1):
+					tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(5, randi_range(0,3)))
+				if tile_class == "SW_corner" and x != (grid_size.x - 1):
+					tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(6, randi_range(0,3)))
+				if tile_class == "NE_corner" and x != (grid_size.x - 1):
+					tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(7, randi_range(0,3)))
+				if tile_class == "NW_corner" and x != (grid_size.x - 1):
+					tile_map.set_cell(0, Vector2i(x, y), 0, Vector2i(8, randi_range(0,3)))
