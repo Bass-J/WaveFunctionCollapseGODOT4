@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccwosueyascdn"
-path="res://.godot/imported/BlackTile.png-9873265cce176912c087a90563c5c658.ctex"
+uid="uid://blfjpo8svwmf0"
+path="res://.godot/imported/forest_tileset.png-ae086a8e7e89096caa210dd6017dd746.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BlackTile.png"
-dest_files=["res://.godot/imported/BlackTile.png-9873265cce176912c087a90563c5c658.ctex"]
+source_file="res://forest_tileset.png"
+dest_files=["res://.godot/imported/forest_tileset.png-ae086a8e7e89096caa210dd6017dd746.ctex"]
 
 [params]
 
