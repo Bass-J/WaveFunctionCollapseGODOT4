@@ -1,27 +1,64 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctp648cw874dp"]
 
 [ext_resource type="Script" uid="uid://cbt13bo6ek44h" path="res://forest_level.gd" id="1_1jb81"]
-[ext_resource type="Texture2D" uid="uid://ccwosueyascdn" path="res://BlackTile.png" id="1_r31st"]
+[ext_resource type="Texture2D" uid="uid://cpa6ogcw1v5ng" path="res://forest_tile_set(GROUND).png" id="2_1jb81"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1jb81"]
-texture = ExtResource("1_r31st")
-texture_region_size = Vector2i(128, 128)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r042g"]
+texture = ExtResource("2_1jb81")
+texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+8:2/0 = 0
+7:2/0 = 0
+7:3/0 = 0
+8:3/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_r042g"]
-tile_size = Vector2i(128, 128)
-physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_1jb81")
+[sub_resource type="TileSet" id="TileSet_kbx0q"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_r042g")
 
 [node name="ForestLevel" type="Node2D"]
 script = ExtResource("1_1jb81")
+noise_density = 38
+grid_size = Vector2i(90, 50)
+iterations = 5
+floater_size_min = 10
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_r042g")
+tile_set = SubResource("TileSet_kbx0q")
 format = 2
 
 [node name="Camera2D" type="Camera2D" parent="TileMap"]
+position = Vector2(-330, -230)
 anchor_mode = 0
-zoom = Vector2(0.2, 0.2)
+zoom = Vector2(0.18, 0.18)
